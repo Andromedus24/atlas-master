@@ -1,0 +1,6 @@
+{
+    "env": {
+        "ANTHROPIC_API_KEY": "0679418ca97e49a8bb0234a9f1d4f641.2Luz2auV8lR6T7Wz",
+        "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic"
+    }
+}
