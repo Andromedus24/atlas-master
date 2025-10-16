@@ -1,0 +1,67 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "build/**"],
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_*",
+        "DATABASE_URL",
+        "ANTHROPIC_API_KEY",
+        "GOOGLE_AI_API_KEY",
+        "OLLAMA_BASE_URL"
+      ]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false,
+      "env": [
+        "NODE_ENV",
+        "PORT",
+        "NEXT_PUBLIC_*",
+        "DATABASE_URL",
+        "ANTHROPIC_API_KEY",
+        "GOOGLE_AI_API_KEY",
+        "OLLAMA_BASE_URL"
+      ]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"],
+      "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "inputs": ["**/*"],
+      "outputs": ["test-results/**"]
+    },
+    "test:watch": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^build"]
+    },
+    "type-check": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "clean:all": {
+      "cache": false
+    }
+  },
+  "globalDependencies": [
+    "package.json",
+    "tsconfig.json",
+    ".eslintrc.js",
+    "turbo.json"
+  ]
+}

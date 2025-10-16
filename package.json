@@ -1,0 +1,103 @@
+{
+  "name": "atlas",
+  "version": "0.1.0",
+  "description": "AI-powered desktop assistant with plugin system",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:all": "turbo dev --parallel",
+    "dev:dashboard": "turbo dev --filter=dashboard",
+    "dev:electron": "turbo dev --filter=electron-host",
+    "build": "turbo build",
+    "build:packages": "turbo build --filter='./packages/*'",
+    "build:dashboard": "turbo build --filter=dashboard",
+    "build:electron": "turbo build --filter=electron-host",
+    "build:prod": "turbo build --filter='./packages/*' && turbo build --filter=dashboard && node scripts/build-prod.js",
+    "test": "turbo test",
+    "test:e2e": "turbo test:e2e",
+    "test:watch": "turbo test:watch",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean && rm -rf node_modules/.cache .turbo .next dist build",
+    "clean:all": "turbo clean:all && rm -rf node_modules/.cache .turbo .next dist build node_modules apps/*/node_modules packages/*/node_modules",
+    "package": "turbo build:packages && electron-builder",
+    "package:mac": "turbo build:packages && electron-builder --mac",
+    "package:win": "turbo build:packages && electron-builder --win",
+    "package:linux": "turbo build:packages && electron-builder --linux",
+    "setup": "chmod +x setup.sh && ./setup.sh",
+    "postinstall": "pnpm build:packages"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^24.6.4",
+    "eslint": "^8.54.0",
+    "eslint-config-next": "^14.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.7.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@playwright/test": "^1.40.0",
+    "prettier": "^3.1.0",
+    "turbo": "^1.10.16",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "plugins/*"
+  ],
+  "electron-builder": {
+    "appId": "com.free-cluely.atlas",
+    "productName": "Atlas",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "apps/electron-host/dist/**/*",
+      "apps/electron-host/package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        }
+      ]
+    }
+  }
+}
