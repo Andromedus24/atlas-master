@@ -1,0 +1,47 @@
+{
+  "name": "electron-host",
+  "version": "0.1.0",
+  "description": "Electron host application for Atlas desktop assistant",
+  "main": "dist/main.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "tsc && electron-forge start",
+    "build": "tsc",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "clean": "rm -rf dist out"
+  },
+  "dependencies": {
+    "@free-cluely/shared": "workspace:*",
+    "@free-cluely/config": "workspace:*",
+    "@free-cluely/plugin-bus": "workspace:*",
+    "@free-cluely/adapters": "workspace:*",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-deb": "^2.0.3",
+    "@electron-forge/maker-dmg": "^2.2.0",
+    "@electron-forge/maker-rpm": "^2.0.2",
+    "@electron-forge/maker-squirrel": "^2.0.3",
+    "@electron-forge/maker-zip": "^2.0.3",
+    "@electron-forge/plugin-webpack": "^7.2.0",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "electron": "^33.0.0",
+    "eslint": "^8.54.0",
+    "jest": "^29.7.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
