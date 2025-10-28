@@ -1,0 +1,49 @@
+{
+  "name": "@free-cluely/atlas",
+  "version": "1.0.0",
+  "description": "AI-powered desktop assistant with plugin system and multi-provider AI support",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "plugins/*"
+  ],
+  "scripts": {
+    "install": "pnpm install",
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter='./packages/*'",
+    "build:dashboard": "turbo run build --filter='dashboard'",
+    "build:electron": "turbo run build --filter='electron-host'",
+    "build:prod": "node scripts/build-prod.js",
+    "dev": "turbo run dev",
+    "dev:all": "turbo run dev --filter='dashboard' --filter='electron-host'",
+    "dev:dashboard": "turbo run dev --filter='dashboard'",
+    "dev:electron": "turbo run dev --filter='electron-host'",
+    "clean": "turbo run clean && rm -rf node_modules/.cache",
+    "clean:all": "turbo run clean:all && rm -rf node_modules",
+    "type-check": "turbo run type-check",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "package": "turbo run package --filter='electron-host'",
+    "package:mac": "turbo run package:mac --filter='electron-host'",
+    "package:win": "turbo run package:win --filter='electron-host'",
+    "package:linux": "turbo run package:linux --filter='electron-host'"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

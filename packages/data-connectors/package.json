@@ -1,0 +1,29 @@
+{
+  "name": "@free-cluely/data-connectors",
+  "version": "1.0.0",
+  "description": "Data connectors for URL/API/CSV ingestion",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "clean:all": "rm -rf dist node_modules",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@free-cluely/shared": "workspace:*",
+    "@free-cluely/config": "workspace:*",
+    "axios": "^1.6.0",
+    "csv-parser": "^3.0.0",
+    "node-cron": "^3.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/node-cron": "^3.0.0",
+    "typescript": "^5.0.0"
+  }
+}

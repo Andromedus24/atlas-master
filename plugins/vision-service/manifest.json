@@ -1,0 +1,11 @@
+{
+  "id": "vision-service",
+  "name": "Vision Service",
+  "version": "1.0.0",
+  "description": "Computer vision plugin for image analysis and OCR",
+  "permissions": ["screen", "camera"],
+  "capabilities": ["analyze", "ocr", "object-detection", "text-extraction"],
+  "dependencies": [],
+  "author": "Atlas Team",
+  "homepage": "https://github.com/free-cluely/atlas"
+}
