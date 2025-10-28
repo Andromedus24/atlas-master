@@ -1,0 +1,54 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "build/**"]
+    },
+    "build:prod": {
+      "dependsOn": ["^build", "build"],
+      "outputs": ["dist/**", ".next/**", "build/**"]
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "type-check": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx", "**/*.test.ts", "**/*.spec.ts"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "inputs": ["tests/**/*.ts", "playwright.config.ts"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "clean:all": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "package": {
+      "dependsOn": ["^build", "build"],
+      "outputs": ["release/**"]
+    },
+    "package:mac": {
+      "dependsOn": ["^build", "build"],
+      "outputs": ["release/**"]
+    },
+    "package:win": {
+      "dependsOn": ["^build", "build"],
+      "outputs": ["release/**"]
+    },
+    "package:linux": {
+      "dependsOn": ["^build", "build"],
+      "outputs": ["release/**"]
+    }
+  }
+}

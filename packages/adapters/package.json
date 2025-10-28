@@ -1,0 +1,27 @@
+{
+  "name": "@free-cluely/adapters",
+  "version": "1.0.0",
+  "description": "AI provider adapters for Atlas",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@free-cluely/shared": "workspace:*",
+    "zod": "^3.22.0",
+    "openai": "^4.20.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0"
+  }
+}

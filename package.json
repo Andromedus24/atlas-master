@@ -1,0 +1,44 @@
+{
+  "name": "atlas-free-cluely",
+  "version": "1.0.0",
+  "description": "AI-powered desktop assistant with plugin system and multi-provider AI support",
+  "private": true,
+  "scripts": {
+    "dev:all": "turbo run dev --parallel",
+    "dev:dashboard": "turbo run dev --filter=dashboard",
+    "dev:electron": "turbo run dev --filter=electron-host",
+    "build:packages": "turbo run build --filter='./packages/*'",
+    "build:dashboard": "turbo run build --filter=dashboard",
+    "build:electron": "turbo run build --filter=electron-host",
+    "build:prod": "turbo run build:prod",
+    "type-check": "turbo run type-check",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "clean:all": "turbo run clean:all && rm -rf node_modules",
+    "package": "turbo run package",
+    "package:mac": "turbo run package:mac",
+    "package:win": "turbo run package:win",
+    "package:linux": "turbo run package:linux"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "@playwright/test": "^1.40.0",
+    "jest": "^29.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "plugins/*"
+  ]
+}
